@@ -13,4 +13,5 @@ def Wiki_request():
     elif response.status_code == 404:
         print('Not Found.')
 
-in __name__ = main:
+if __name__ == "__main__":
+req = Wiki_request()
