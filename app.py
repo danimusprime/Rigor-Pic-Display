@@ -14,4 +14,4 @@ def Wiki_request():
         print('Not Found.')
 
 if __name__ == "__main__":
-req = Wiki_request()
+    req = Wiki_request()
