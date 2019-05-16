@@ -2,12 +2,14 @@ import boto3 as bt3
 import json
 import requests as req
 import pylast
-from credentials import API_KEY, API_SECRET, password_hash, username
+import credentials
 
+username = 'contremoi'
+password_hash = pylast.md5(credentials.password_hash)
 network = pylast.LastFMNetwork(api_key=credentials.API_KEY, api_secret=credentials.API_SECRET,
-                               username=credentials.username, password_hash=credentials.password_hash)
+                               username=username    , password_hash=password_hash)
 
-geograph = network.geo.getTopArtist("United States", credentials.API_KEY)
+geograph = network.get_Artist("Pavement")
 
 print(geograph)
 
