@@ -1,7 +1,7 @@
 import boto3 as bt3
 import json
 import requests as req
-import pyLast
+import pylast
 from credentials import API_KEY, API_SECRET, password_hash, username
 
 network = pylast.LastFMNetwork(api_key=credentials.API_KEY, api_secret=credentials.API_SECRET,
