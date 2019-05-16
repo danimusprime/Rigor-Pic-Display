@@ -7,7 +7,7 @@ import credentials
 username = 'contremoi'
 password_hash = pylast.md5(credentials.password_hash)
 network = pylast.LastFMNetwork(api_key=credentials.API_KEY, api_secret=credentials.API_SECRET,
-                               username=username    , password_hash=password_hash)
+                               username=username, password_hash=password_hash)
 
 geograph = network.get_Artist("Pavement")
 
