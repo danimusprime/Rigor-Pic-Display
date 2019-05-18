@@ -4,16 +4,6 @@ import requests as req
 import pylast
 import credentials
 
-username = 'contremoi'
-password_hash = pylast.md5(credentials.password_hash)
-network = pylast.LastFMNetwork(api_key=credentials.API_KEY, api_secret=credentials.API_SECRET,
-                               username=username, password_hash=password_hash)
-
-geograph = network.get_Artist("Pavement")
-
-print(geograph)
-
-'''
 def request_status_check():
     response = req.get('https://www.wikiart.org/en/paintings-by-style/socialist-realism?json=2&page=1', params=None)
     if response.status_code == 200:
