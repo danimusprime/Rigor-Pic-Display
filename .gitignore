@@ -9,6 +9,7 @@ __pycache__/
 # Other
 credentials.py
 scratch.py
+Sample Data
 
 # Distribution / packaging
 .Python

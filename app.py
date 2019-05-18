@@ -20,7 +20,7 @@ def Wiki_request():
     #print(json_response)
 
 def wiki_headers():
-    wiki = req.get('https://www.wikiart.org/en/paintings-by-style/socialist-realism?json=2&page=1', params=None)
+    wiki = request_status_check()
     json_headers = wiki.headers
     #return json_headers
     print(json_headers)
@@ -38,6 +38,5 @@ def upload_images_to_s3(directory):
 
 if __name__ == "__main__":
     check = request_status_check()
-    req = Wiki_request()
+    #req = Wiki_request()
     header = wiki_headers()
-'''
