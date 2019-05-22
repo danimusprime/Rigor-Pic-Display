@@ -3,7 +3,7 @@ import json
 import requests as req
 import pylast
 import credentials
-import settings
+#import settings
 import shutil as sh
 import pathlib
 
