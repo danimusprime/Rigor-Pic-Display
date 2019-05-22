@@ -3,6 +3,7 @@ import json
 import requests as req
 import pylast
 import credentials
+from pathlib import Path
 
 def request_status_check():
     response = req.get('https://www.wikiart.org/en/paintings-by-style/socialist-realism?json=2&page=1', params=None)
@@ -25,6 +26,18 @@ def wiki_headers():
     #return json_headers
     print(json_headers)
 
+def store_image():
+    dataset = 'wiki_images'
+    datasets_root = Path('/Users/Danimal/Desktop/Rigor-Pic-Display/Sample Data')
+
+    train_path = datasets_root / 'data.json'
+    test_path = datasets_root / dataset / 'test'
+
+    for image_path in train_path.iterdir():
+        with image_path.open() as f: # note, open is a method of Path object
+            # do something with an image
+
+
 def upload_images_to_s3(directory):
 
     for f in directory.iterdir():
@@ -33,6 +46,10 @@ def upload_images_to_s3(directory):
             file_name = str(f.name)
             s3_client.upload_file(full_file_path, settings.BASE_BUCKET, file_name)
             print(f,"put")
+
+
+
+
 
 
 
