@@ -11,9 +11,9 @@ def request_status_check():
     '''
     This code was originall designed just to perform the call & validate success
     now peforming an iterative write to file in the given path.
-    this currently returns valid json data
+    this currently returns valid json data to various paths.
     '''
-    datasets_path = Path('/Users/Danimal/Desktop/art_test_s3/download.json')
+    datasets_path = '/Users/Danimal/Desktop/art_test_s3/download.json'
     response = req.get('https://www.wikiart.org/en/paintings-by-style/socialist-realism?json=2&page=1', params=None)
     if response.status_code == 200:
         with open(datasets_path, 'wb') as f:
