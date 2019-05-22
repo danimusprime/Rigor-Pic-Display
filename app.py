@@ -3,12 +3,16 @@ import json
 import requests as req
 import pylast
 import credentials
+import shutil as sh
 from pathlib import Path
 
 def request_status_check():
+    datasets_root = Path('/Users/Danimal/Desktop/Rigor-Pic-Display/Sample Data')
     response = req.get('https://www.wikiart.org/en/paintings-by-style/socialist-realism?json=2&page=1', params=None)
     if response.status_code == 200:
-        print('Success!')
+        with open(datasets_root, 'wb') as f:
+            response.raw.decode_content = True
+            sh.copyfileobj(response.raw, f)
     elif response.status_code == 404:
         print('Not Found.')
     return response
@@ -23,8 +27,8 @@ def Wiki_request():
 def wiki_headers():
     wiki = request_status_check()
     json_headers = wiki.headers
-    #return json_headers
-    print(json_headers)
+    return json_headers
+    #print(json_headers)
 
 def store_image():
     dataset = 'wiki_images'
@@ -37,7 +41,6 @@ def store_image():
         with image_path.open() as f: # note, open is a method of Path object
             # do something with an image
 
-
 def upload_images_to_s3(directory):
 
     for f in directory.iterdir():
@@ -47,13 +50,7 @@ def upload_images_to_s3(directory):
             s3_client.upload_file(full_file_path, settings.BASE_BUCKET, file_name)
             print(f,"put")
 
-
-
-
-
-
-
 if __name__ == "__main__":
     check = request_status_check()
     #req = Wiki_request()
-    header = wiki_headers()
+    #header = wiki_headers()
